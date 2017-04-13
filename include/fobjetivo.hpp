@@ -12,7 +12,7 @@ class fobjetivo{
         unsigned getNumvar();
         std::string getVarz();
         void setNumvar(const unsigned &);
-        void setVarz(const std::string &);
+        void setMaxMinz(const std::string &);
 
     private:
         unsigned numvar;

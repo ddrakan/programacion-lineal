@@ -1,10 +1,11 @@
 #include "fobjetivo.hpp"
+#include "SujetoA.hpp"
 
 #include <iostream>
 #include <vector>
 
-void asignarcoeficientes(std::vector<int>&, const unsigned &);
-void mostrarcoeficientes(const std::vector<int>&);
+void AsignarCoeficientes(std::vector<int>&, const unsigned &);
+void MostrarCoeficientes(const std::vector<int>&);
 
 
 int main(){
@@ -12,6 +13,7 @@ int main(){
     unsigned tam{0};
     std::string objetivo = " ";
     std::vector<int> vect_coeficientes;
+    std::vector<int> vect_CoeficientesSA;
 
     std::cout<<"Ingresar Objetivo: Max(z) \242 Min(z)\nObjetivo = ";
     std::cin>>objetivo;
@@ -19,17 +21,17 @@ int main(){
     std::cout<<"Ingrese el n\243mero de variables de decisi\242n\nn\243mero = ";
     std::cin>>tam;
 
-    fo.setVarz(objetivo);
+    fo.setMaxMinz(objetivo);
     fo.setNumvar(tam);
 
-    asignarcoeficientes(vect_coeficientes, fo.getNumvar());
+    AsignarCoeficientes(vect_coeficientes, fo.getNumvar());
     std::cout << "\tFO: " << fo.getVarz() << " = ";
-    mostrarcoeficientes(vect_coeficientes);
+    MostrarCoeficientes(vect_coeficientes);
 
     return 0;
 }
 
-void asignarcoeficientes(std::vector<int>& vect, const unsigned &tam) {
+void AsignarCoeficientes(std::vector<int>& vect, const unsigned &tam) {
     int coef_temp{0};
     unsigned indice{0};
     for(unsigned num = 0; num < tam; ++num){
@@ -39,7 +41,7 @@ void asignarcoeficientes(std::vector<int>& vect, const unsigned &tam) {
     }
 }
 
-void mostrarcoeficientes(const std::vector<int>& vect){
+void MostrarCoeficientes(const std::vector<int>& vect){
     unsigned subnumeros{0};
     for (const auto& valor : vect)
         std::cout << "+" << valor << "X" << ++subnumeros << '\t';
